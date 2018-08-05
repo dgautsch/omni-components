@@ -3,7 +3,6 @@ customElements.define(
   class extends HTMLElement {
     get template() {
       return `
-        <link rel="stylesheet" href="./components/modal/modal.css">
         <div class="modal fade">
             <div tabindex="0"></div>
             <div id="alert_modal" role="alertdialog" aria-modal="true" aria-labelledby="modal_label" aria-describedby="modal_desc"
@@ -28,32 +27,41 @@ customElements.define(
     constructor() {
       super();
       const template = document.createElement('template');
+      const shadow = this.attachShadow({ mode: 'open' });
       template.innerHTML = this.template;
-      this.appendChild(template.content.cloneNode(true));
+      shadow.appendChild(template.content.cloneNode(true));
+      // this.appendChild(template.content.cloneNode(true));
+    }
+
+    getSetting(attr) {
+      if (!this.shadowRoot.host.hasAttribute(attr)) {
+        throw 'Attribute not set for ' + attr;
+      }
+      return this.shadowRoot.host.getAttribute(attr);
     }
 
     get id() {
-      return this.getAttribute('modalId');
+      return this.getSetting('modalId');
     }
 
     get title() {
-      return this.getAttribute('title');
+      return this.getSetting('title');
     }
 
     get content() {
-      return this.getAttribute('content');
+      return this.getSetting('content');
     }
 
     set setModalTitle(title) {
-      document.getElementById('modal_label').innerHTML = title;
+      this.shadowRoot.getElementById('modal_label').innerHTML = title;
     }
 
     set setModalContent(desc) {
-      document.getElementById('modal_desc').innerHTML = desc;
+      this.shadowRoot.getElementById('modal_desc').innerHTML = desc;
     }
 
     set setModalId(id) {
-      document.querySelector('.modal').setAttribute('id', id);
+      this.shadowRoot.querySelector('.modal').setAttribute('id', id);
     }
 
     connectedCallback() {
