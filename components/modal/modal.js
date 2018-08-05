@@ -4,17 +4,21 @@ customElements.define(
     get template() {
       return `
         <link rel="stylesheet" href="./components/modal/modal.css">
-        <div class="modal-backdrop no-scroll">
+        <div class="modal fade">
             <div tabindex="0"></div>
             <div id="alert_modal" role="alertdialog" aria-modal="true" aria-labelledby="modal_label" aria-describedby="modal_desc"
-                class="default_modal">
-                <h2 id="modal_label" class="modal_label">Title</h2>
-                <p id="modal_desc" class="modal_desc">
-                    Content
-                </p>
-                <div class="modal_form_actions">
-                    <button type="button" class="btn btn-primary">Close</button>
-                    <button type="button" class="btn">Confirm</button>
+                class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 id="modal_label" class="modal_label"><slot name="modal-label">Title</slot></h2>
+                  </div>
+                  <div id="modal_desc" class="modal-body">
+                      <slot name="modal-description">Content</slot>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Confirm</button>
+                  </div>
                 </div>
             </div>
             <div tabindex="0"></div>
@@ -24,30 +28,38 @@ customElements.define(
     constructor() {
       super();
       const template = document.createElement('template');
-      const shadow = this.attachShadow({ mode: 'open' });
       template.innerHTML = this.template;
-      shadow.appendChild(template.content.cloneNode(true));
+      this.appendChild(template.content.cloneNode(true));
     }
 
-    get attrTitle() {
-        return this.getAttribute('title');
+    get id() {
+      return this.getAttribute('modalId');
+    }
+
+    get title() {
+      return this.getAttribute('title');
     }
 
     get content() {
-        return this.innerHTML;
+      return this.getAttribute('content');
     }
 
-    set setModalLabel(title) {
-        this.shadowRoot.getElementById('modal_label').innerHTML = title;
+    set setModalTitle(title) {
+      document.getElementById('modal_label').innerHTML = title;
     }
 
-    set setModalDesc(desc) {
-        this.shadowRoot.getElementById('modal_desc').innerHTML = desc;
+    set setModalContent(desc) {
+      document.getElementById('modal_desc').innerHTML = desc;
+    }
+
+    set setModalId(id) {
+      document.querySelector('.modal').setAttribute('id', id);
     }
 
     connectedCallback() {
-        this.setModalLabel = this.attrTitle;
-        this.setModalDesc = this.content;
+      this.setModalTitle = this.title;
+      this.setModalContent = this.content;
+      this.setModalId = this.id;
     }
   }
 );
