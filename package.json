@@ -1,0 +1,25 @@
+{
+  "name": "omni-components",
+  "version": "1.0.0",
+  "description": "A web components demonstration with any framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgautsch/omni-components.git"
+  },
+  "keywords": [
+    "JavaScript"
+  ],
+  "author": "Dan Gautsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgautsch/omni-components/issues"
+  },
+  "homepage": "https://github.com/dgautsch/omni-components#readme",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.4"
+  }
+}
