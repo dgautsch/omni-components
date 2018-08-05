@@ -15,15 +15,17 @@
 <body>
     <div class="container">
             <h1>Web Components Demo</h1>
-            <modal-dialog
-                modalId="exampleModal"
-                title="Hello World" 
-                content="Lorem ipsum sit amet. Hic Iacet.">
+            <modal-dialog>
+                <span slot="modal-title">Hello World</span>
+                <span slot="modal-body">Lorem ipsum sit amet. Hic Iacet.</span>
+                <span slot="modal-trigger">Launch Modal</span>
             </modal-dialog>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Launch demo modal
-            </button>
+
+            <modal-dialog>
+                <span slot="modal-title">Hello World 2</span>
+                <span slot="modal-body">Lorem ipsum sit amet. Hic Iacet.</span>
+                <span slot="modal-trigger">Launch Other Modal</span>
+            </modal-dialog>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
