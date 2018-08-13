@@ -18,6 +18,7 @@ customElements.define(
                 </div>
                 <button type="submit">Submit</button>
             </fieldset>
+            <a-button></a-button>
         </form>
         `;
       }
