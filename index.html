@@ -10,26 +10,27 @@
     <link rel="stylesheet" href="styles.css">
     <script src="node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script type="module" src="components/modal/modal.js"></script>
-    <script type="module" src="components/login-form/login-form.js"></script>
+    <script type="module" src="components/menu-bar/menu-bar.js"></script>
     <script type="module" src="components/a-button/a-button.js"></script>
+    <script type="module" src="components/price-card/price-card.js"></script>
 </head>
 
 <body>
     <div class="container">
-            <h1>Web Components Demo</h1>
-            <modal-dialog>
-                <span slot="modal-title">Hello World</span>
-                <span slot="modal-body">Lorem ipsum sit amet. Hic Iacet.</span>
-                <span slot="modal-trigger">Launch Modal</span>
-            </modal-dialog>
-
-            <modal-dialog>
-                <span slot="modal-title">Hello World 2</span>
-                <span slot="modal-body">Lorem ipsum sit amet. Hic Iacet.</span>
-                <span slot="modal-trigger">Launch Other Modal</span>
-            </modal-dialog>
-            <login-form></login-form>
+            <menu-bar role="menu" class="row">
+                <h1 slot="title" class="h3">WC</h1>
+                <menu-item><a href="#">Home</a></menu-item>
+                <menu-item><a href="#">About</a></menu-item>
+                <menu-item><a href="#">Contact</a></menu-item>
+            </menu-bar>
+            <main class="row">
+                <div class="col-8">
+                    <h1>Web Components Demo</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eius ad cumque perferendis doloremque a, hic, quo optio repellat vero distinctio, velit asperiores itaque maxime? Accusantium dicta praesentium alias officia.</p>
+                </div>
+                <div class="col-4"><price-card></price-card></div>
+            </main>
+            
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
