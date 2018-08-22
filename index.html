@@ -12,7 +12,7 @@
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module" src="/src/vanilla/menu-bar/menu-bar.js"></script>
     <script type="module" src="/src/vanilla/a-button/a-button.js"></script>
-    <script type="module" src="/src/vanilla/price-card/price-card.js"></script>
+    <script type="module" src="/src/vanilla/modal/modal.js"></script>
     <script src="/dist/omni.js"></script>
 </head>
 
@@ -28,13 +28,20 @@
                 <div class="col-8">
                     <h1>Web Components Demo</h1>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eius ad cumque perferendis doloremque a, hic, quo optio repellat vero distinctio, velit asperiores itaque maxime? Accusantium dicta praesentium alias officia.</p>
+                    
+                    <a-button click-action>Action Button</a-button>
+                    <style>
+                        /* CSS Variable Overrides */
+                        a-button {
+                            --button-text-color: red;
+                        }
+                    </style>
+                    <modal-dialog>Open Modal</modal-dialog>
                 </div>
                 <div class="col-4">
-                    <price-card></price-card>
-                </div>
-                <div class="col-12">
                     <h2>Stencil Built Components</h2>
-                    <display-card cardtitle="Stencil Built" cardbody="Stencil Made"></display-card>
+                    <display-card cardtitle="Display Card Title" cardbody="This is a display card"></display-card>
+                    <display-card cardtitle="Another Display Card" cardbody="This component was built with Stencil"></display-card>
                 </div>
             </main>
             

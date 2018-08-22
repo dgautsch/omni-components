@@ -3,10 +3,9 @@ customElements.define(
   class extends HTMLElement {
     get template() {
       return `
-      <link rel="stylesheet" href="./components/modal/modal.css">
+      <link rel="stylesheet" href="../src/vanilla/modal/modal.css">
       <div id="modal-container">
         <div class="modal fade" id="modal">
-            <div tabindex="0"></div>
             <div role="alertdialog" aria-modal="true" class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -16,21 +15,20 @@ customElements.define(
                       <slot name="modal-body">Default Body Contebt</slot>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" id="modal-close">Close</button>
-                      <button type="button" class="btn btn-primary">Confirm</button>
+                      <a-button type="button" class="btn btn-secondary" id="modal-close">Close</a-button>
+                      <a-button type="button" class="btn btn-primary">Confirm</a-button>
                   </div>
                 </div>
             </div>
-            <div tabindex="0"></div>
         </div>
         <!-- Backdrop -->
         <div class="modal-backdrop"></div>
       </div>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" id="modal-trigger">
-        <slot name="modal-trigger">Open</slot>
-      </button>
+      <a-button type="button" class="btn btn-primary" id="modal-trigger">
+        <slot>Open</slot>
+      </a-button>
       `;
     }
 
