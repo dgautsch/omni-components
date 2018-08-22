@@ -62,3 +62,7 @@ typings/
 
 # editor files
 .vscode
+
+# compiled folders
+dist/
+www/
