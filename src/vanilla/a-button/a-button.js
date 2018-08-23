@@ -7,13 +7,14 @@ class ActionButton extends HTMLElement {
         --button-text-color: #FFF;
         --button-border-color: #333333;
         --button-background-color: #666;
-        --button-font-size: 18px;
+        --button-font-size: 14px;
       }
       button {
         color: var(--button-text-color);
         border: 1px solid var(--button-border-color);
+        border-radius: 3px;
         background: var(--button-background-color);
-        padding: 1em;
+        padding: 0.5em;
         font-size: var(--button-font-size);
       }
     </style>

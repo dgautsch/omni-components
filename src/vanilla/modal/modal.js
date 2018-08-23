@@ -12,7 +12,7 @@ customElements.define(
                     <h2 class="modal-title"><slot name="modal-title">Default Title</slot></h2>
                   </div>
                   <div class="modal-body">
-                      <slot name="modal-body">Default Body Contebt</slot>
+                      <slot name="modal-body">Default Body Content</slot>
                   </div>
                   <div class="modal-footer">
                       <a-button type="button" class="btn btn-secondary" id="modal-close">Close</a-button>

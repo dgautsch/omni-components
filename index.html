@@ -10,32 +10,37 @@
     <link rel="stylesheet" href="styles.css">
     <script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="/node_modules/vue/dist/vue.js"></script>
     <script type="module" src="/src/vanilla/menu-bar/menu-bar.js"></script>
     <script type="module" src="/src/vanilla/a-button/a-button.js"></script>
     <script type="module" src="/src/vanilla/modal/modal.js"></script>
     <script src="/dist/omni.js"></script>
+    <style>
+        /* CSS Variable Overrides */
+        a-button {
+            --button-text-color: #12EEFF;
+        }
+        menu-bar {
+            margin: 1em 0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-            <menu-bar role="menu" class="row">
-                <h1 slot="title" class="h3">WC</h1>
-                <menu-item><a href="#">Home</a></menu-item>
-                <menu-item><a href="#">About</a></menu-item>
-                <menu-item><a href="#">Contact</a></menu-item>
-            </menu-bar>
-            <main class="row">
+        <menu-bar role="menu" class="row">
+            <h1 slot="title" class="h3">WC</h1>
+            <menu-item><a href="#">Home</a></menu-item>
+            <menu-item><a href="#">About</a></menu-item>
+            <menu-item><a href="#">Contact</a></menu-item>
+        </menu-bar>
+        <main>
+            <div class="row">
                 <div class="col-8">
                     <h1>Web Components Demo</h1>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eius ad cumque perferendis doloremque a, hic, quo optio repellat vero distinctio, velit asperiores itaque maxime? Accusantium dicta praesentium alias officia.</p>
                     
                     <a-button click-action>Action Button</a-button>
-                    <style>
-                        /* CSS Variable Overrides */
-                        a-button {
-                            --button-text-color: red;
-                        }
-                    </style>
                     <modal-dialog>Open Modal</modal-dialog>
                 </div>
                 <div class="col-4">
@@ -43,11 +48,30 @@
                     <display-card cardtitle="Display Card Title" cardbody="This is a display card"></display-card>
                     <display-card cardtitle="Another Display Card" cardbody="This component was built with Stencil"></display-card>
                 </div>
-            </main>
-            
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div id="vue-app">
+                        <h2>VueJS</h2>
+                        <p>Web Components can be used inside any framework because they are simply HTML Elements.</p>
+                        <a-button click-action>{{message}}</a-button>
+                    </div>
+                    <script>
+                        Vue.config.ignoredElements = [
+                            'a-button',
+                            'display-card'
+                        ]
+                        new Vue({
+                            el: '#vue-app',
+                            data: {
+                                message: 'Hello Vue.js!'
+                            }
+                            })
+                    </script>
+                </div>
+            </div>
+        </main>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
