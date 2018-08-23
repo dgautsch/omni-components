@@ -39,7 +39,7 @@
                 <div class="col-8">
                     <h1>Web Components Demo</h1>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eius ad cumque perferendis doloremque a, hic, quo optio repellat vero distinctio, velit asperiores itaque maxime? Accusantium dicta praesentium alias officia.</p>
-                    
+                    <display-card cardtitle="Display Card Title" cardbody="This is a display card"></display-card>
                     <a-button click-action>Action Button</a-button>
                     <modal-dialog>Open Modal</modal-dialog>
                 </div>
@@ -54,7 +54,8 @@
                     <div id="vue-app">
                         <h2>VueJS</h2>
                         <p>Web Components can be used inside any framework because they are simply HTML Elements.</p>
-                        <a-button click-action>{{message}}</a-button>
+                        <a-button click-action="My Message">{{hello}}</a-button>
+                        <a-button v-for="message in messages" :click-action=message>{{message}}</a-button>
                     </div>
                     <script>
                         Vue.config.ignoredElements = [
@@ -64,7 +65,13 @@
                         new Vue({
                             el: '#vue-app',
                             data: {
-                                message: 'Hello Vue.js!'
+                                hello: 'Hello Vue.js!',
+                                messages: [
+                                    'Hello',
+                                    'Hi',
+                                    'Salutations',
+                                    'Sup'
+                                ]
                             }
                             })
                     </script>

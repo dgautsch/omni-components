@@ -15,6 +15,7 @@ class ActionButton extends HTMLElement {
         border-radius: 3px;
         background: var(--button-background-color);
         padding: 0.5em;
+        cursor: pointer;
         font-size: var(--button-font-size);
       }
     </style>
@@ -33,12 +34,15 @@ class ActionButton extends HTMLElement {
 
   connectedCallback() {
     if (this.hasAttribute('click-action')) {
-      this.addEventListener('click', this.handleClick);
+      this.addEventListener('click', this.handleClick(this.getAttribute('click-action')));
     }
   }
 
-  handleClick() {
-    alert('Clicked!');
+  handleClick(text) {
+    const message = text || 'Clicked!';
+    return function() {
+      alert(message);
+    }
   }
 }
 customElements.define('a-button', ActionButton);
